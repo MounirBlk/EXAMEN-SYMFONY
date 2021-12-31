@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8">
+				<h2 class="text-center mt-5 mb-3">Tableau de board</h2>
+			</div>
+			<div class="col-md-4">
+				<a href="{{ path('create_film') }}" class="btn btn-info mt-5 mb-3">
+					<i class="fa fa-star"></i>
+					Nouveau film
+				</a>
+			</div>
+			<div class="col-md-7">
+				<h2 class="text-center my-5">Films</h2>
+				<div class="row mx-0">
+					<table class="table col-12">
+						<thead>
+							<tr>
+								<th class="text-center" scope="col">ID</th>
+								<th class="text-center" scope="col">Titre</th>
+								<th class="text-center" scope="col">Resume</th>
+								<th class="text-center" scope="col">Durée</th>
+								<th class="text-center" scope="col">Année sortie</th>
+								<th class="text-center" scope="col">Prix en €</th>
+								<th class="text-center" scope="col">Réalisateur</th>
+								<th class="text-center" scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for film in films %}
+								<tr>
+									<td class="text-center">
+										{{ film.id }}
+									</td>
+									<td class="text-center">
+										{{ film.titre }}
+									</td>
+									<td class="text-center">
+										{{ film.resume }}
+									</td>
+									<td class="text-center">
+										{{ film.duree }}
+									</td>
+									<td class="text-center">
+										{{ film.anneeSortie }}
+									</td>
+									<td class="text-center">
+										{{ film.prix }}
+									</td>
+									<td class="text-center">
+										Mr/Mme.
+										{{ film.realisateurId.nom }}
+									</td>
+									<td class="text-center">
+										<a href="#" class="btn btn-primary">
+											<i class="fa fa-edit"></i>
+										</a>
+										&nbsp;
+										<a href="#" class="btn btn-danger">
+											<i class="fa fa-trash"></i>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<h2 class="text-center my-5">Réalisateur</h2>
+				<div class="row mx-0">
+					<table class="table col-12">
+						<thead>
+							<tr>
+								<th class="text-center" scope="col">ID</th>
+								<th class="text-center" scope="col">Prenom</th>
+								<th class="text-center" scope="col">Nom</th>
+								<th class="text-center" scope="col">Pays</th>
+								<th class="text-center" scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for realisateur in realisateurs %}
+								<tr>
+									<td class="text-center">
+										{{ realisateur.id }}
+									</td>
+									<td class="text-center">
+										{{ realisateur.prenom }}
+									</td>
+									<td class="text-center">
+										{{ realisateur.nom }}
+									</td>
+									<td class="text-center">
+										{{ realisateur.pays }}
+									</td>
+									<td class="text-center">
+										<a href="#" class="btn btn-primary">
+											<i class="fa fa-edit"></i>
+										</a>
+										&nbsp;
+										<a href="#" class="btn btn-danger">
+											<i class="fa fa-trash"></i>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
